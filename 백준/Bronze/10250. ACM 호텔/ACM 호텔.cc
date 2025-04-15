@@ -1,0 +1,37 @@
+//
+// Created by 김규민 on 2024/01/24.
+//
+//
+// Created by 김규민 on 2024/01/24.
+//
+#include <iostream>
+#include <cstring>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+    int t; cin >> t;
+    while (t--) {
+        int h,w,n;
+        cin >> h >> w >> n;
+        if (n % h == 0) {
+            cout << h;
+            if (n/h < 10) {
+                cout << '0' << n/h << endl;
+            }
+            else
+                cout << n/h << endl;
+            continue;
+        } else {
+            cout << n % h;
+        }
+        if ((n/h + 1) < 10) {
+            cout << '0' << n/h + 1 << '\n';
+        } else {
+            cout << n/h + 1 << '\n';
+        }
+    }
+}
