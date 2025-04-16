@@ -20,13 +20,17 @@ public class Main {
                 int cur = coin[j];
                 if (i - cur < 0)
                     continue;
-                if (dp[i] < 0) {
+                if (dp[i] < 0 && dp[i - cur] >= 0) {
                     dp[i] = dp[i - cur] + 1;
-                } else {
+                } else if (dp[i - cur] >= 0) {
                     dp[i] = Math.min(dp[i], dp[i - cur] + 1);
                 }
             }
         }
+
+        // for(int i = 1; i <= m; i++) {
+        //     System.out.println(dp[i]);
+        // }
         System.out.println(dp[m]);
     }
 }
