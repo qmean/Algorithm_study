@@ -18,7 +18,7 @@ public class Main {
         for(int i = 0; i < n; i++) {
             int iStart = s[i];
             int iPay = p[i];
-            dp[iStart] = p[i];
+            dp[iStart] = Math.max(dp[iStart], p[i]);
             for(int j = 0; j < i; j++) {
                 int jEnd = e[j];
                 int jStart = s[j];
@@ -33,6 +33,9 @@ public class Main {
             max = Math.max(max, dp[i]);
         }
 
+        // for(int i = 1; i <= 100; i++) {
+        //     System.out.println(dp[i]);
+        // }
         System.out.println(max);
     }
 }
