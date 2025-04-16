@@ -23,8 +23,11 @@ public class Main {
 
     public static int dp(int m) {
         for(int i = 0; i < coin.length; i++) {
-            if (m - coin[i] >= 0)
-                dp[m] = Math.min(dp[m], dp(m-coin[i]) + 1);
+            if (m - coin[i] >= 0) {
+                if (dp(m - coin[i]) != Integer.MAX_VALUE) {
+                    dp[m] = Math.min(dp(m- coin[i])+1, dp[m]);
+                }
+            }
         }
         return dp[m];
     }
