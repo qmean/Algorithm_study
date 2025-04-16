@@ -21,26 +21,14 @@ public class Main {
             }
         }
         for(int i = n-1; i >= 0; i--) {
-            // System.out.println("======" + i + "======");
             for(int j = i+1; j < n; j++) {
-                // System.out.println(i + " " + j);
                 if (arr[i] > arr[j]) {
                     reverseDp[i] = Math.max(reverseDp[i], reverseDp[j] + 1);
                 }
             }
-            // System.out.println(reverseDp[i]);
-            // System.out.println("------------------");
         }
 
         int max = Integer.MIN_VALUE;
-        // for(int i = 0; i < n; i++) {
-        //     System.out.print(dp[i] + " ");
-        // }
-        // System.out.println();
-        // for(int i = 0; i < n; i++) {
-        //     System.out.print(reverseDp[i] + " ");
-        // }
-        // System.out.println();
         for(int i = 0; i < n; i++) {
             max = Math.max(max, dp[i] + reverseDp[i] - 1);
         }
