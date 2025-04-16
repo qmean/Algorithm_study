@@ -13,22 +13,20 @@ public class Main {
         for (int i = 0; i < n; i++)
             coin[i] = sc.nextInt();
         // Please write your code here.
-        Arrays.fill(dp, Integer.MAX_VALUE);
+        Arrays.fill(dp, -1);
         dp[0] = 0;
-        if (dp(m) == Integer.MAX_VALUE)
-            System.out.println(-1);
-        else
-            System.out.println(dp[m]);
-    }
-
-    public static int dp(int m) {
-        for(int i = 0; i < coin.length; i++) {
-            if (m - coin[i] >= 0) {
-                if (dp(m - coin[i]) != Integer.MAX_VALUE) {
-                    dp[m] = Math.min(dp(m- coin[i])+1, dp[m]);
+        for(int i = 1; i <= m; i++) {
+            for(int j = 0; j < n; j++) {
+                int cur = coin[j];
+                if (i - cur < 0)
+                    continue;
+                if (dp[i] < 0) {
+                    dp[i] = dp[i - cur] + 1;
+                } else {
+                    dp[i] = Math.min(dp[i], dp[i - cur] + 1);
                 }
             }
         }
-        return dp[m];
+        System.out.println(dp[m]);
     }
 }
