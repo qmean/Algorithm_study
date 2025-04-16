@@ -16,13 +16,14 @@ public class Main {
 
         for(int i = 0; i < n; i++) {
             int iStart = s[i];
+            int iEnd = e[i];
             int iPay = p[i];
-            map.put(iStart, Math.max(map.getOrDefault(iStart, -1), p[i]));
+            map.put(iEnd, Math.max(map.getOrDefault(iEnd, -1), p[i]));
             for(int j = 0; j < i; j++) {
                 int jEnd = e[j];
                 int jStart = s[j];
                 if (jEnd < iStart) {
-                    map.put(iStart, Math.max(map.get(iStart), map.get(jStart) + iPay));
+                    map.put(iEnd, Math.max(map.get(iEnd), map.get(jEnd) + iPay));
                 }
             }
         }
