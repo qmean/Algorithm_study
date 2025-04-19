@@ -7,6 +7,6 @@ public class Main {
         int a = sc.nextInt();
         int b = sc.nextInt();
 
-        System.out.format("%d %d", b,a)''
+        System.out.format("%d %d", b,a);
     }
 }
