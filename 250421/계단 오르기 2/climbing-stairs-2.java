@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -9,11 +9,20 @@ public class Main {
         }
         // Please write your code here.
         int[][] dp = new int[n+1][4];
-        dp[1][1] = coins[1];
-        dp[1][1] = coins[1];
-        for(int i = 1; i <= n; i++) {
-            
+        dp[1][1] = coins[0];
+        for(int i = 2; i <= n; i++) {
+            dp[i][0] = dp[i-2][0] + coins[i-1];
+            for(int j = 1; j <= 3; j++) {
+                dp[i][j] = Math.max(dp[i-1][j-1], dp[i-2][j]) + coins[i-1];
+            }
         }
+
+        int max = 0;
+        for(int i = 0; i < 4; i++) {
+            max = Math.max(max, dp[n][i]);
+        }
+        
+        System.out.println(max);
     }
 }
 /*
