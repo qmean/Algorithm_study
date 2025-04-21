@@ -10,7 +10,7 @@ public class Main {
         // Please write your code here.
         int[] dp = new int[n+1];
         Arrays.fill(dp, Integer.MIN_VALUE);
-        dp[0] = 2 * nums[0];
+        dp[0] = nums[0];
         for(int i = 1; i < n; i++) {
             dp[i] = Math.max(dp[i-1] + nums[i], nums[i]);
         }
