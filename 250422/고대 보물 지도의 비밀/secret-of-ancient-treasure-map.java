@@ -31,9 +31,12 @@ public class Main {
             for(int j = 0; j <= k; j++) {
                 if (isNegative && j == 0)
                     continue;
+                if (dp[i-1][j-sub] == Long.MIN_VALUE)
+                    continue;
                 dp[i][j] = Math.max(dp[i][j], dp[i-1][j - sub] + arr[i]);
                 max = Math.max(max, dp[i][j]);
             }
+            // System.out.println(max);
         }
 
         System.out.println(max);
