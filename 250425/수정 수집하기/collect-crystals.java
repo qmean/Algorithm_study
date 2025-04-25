@@ -10,11 +10,11 @@ public class Main {
         final int R = 1;
 
         // 1. 시점 2. 이전에 선택한 방향 (왼쪽, 오른쪽) 3. 자리를 옮긴 횟수
-        int[][][] dp = new int[N+1][2][K];
+        int[][][] dp = new int[N+1][2][K+1];
 
         for(int i = 0; i <= N; i++) {
             for(int j = 0; j < 2; j++) {
-                for(int k = 0; k < K; k++) {
+                for(int k = 0; k <= K; k++) {
                     dp[i][j][k] = -1;
                 }
             }
@@ -31,7 +31,7 @@ public class Main {
                     curScore = 1;
                 }
                 int opposite = d == L ? R : L;
-                for(int k = 0; k < K; k++) {
+                for(int k = 0; k <= K; k++) {
                     if (k > 0 && dp[i-1][opposite][k-1] >= 0)
                         dp[i][d][k] = Math.max(dp[i-1][opposite][k-1] + curScore, dp[i][d][k]);
                     if (dp[i-1][d][k] >= 0)
@@ -43,7 +43,7 @@ public class Main {
         int max = 0;
 
         for(int i = 0; i < 2; i++) {
-            for(int j = 0; j < K; j++) {
+            for(int j = 0; j <= K; j++) {
                 max = Math.max(dp[N][i][j], max);
             }
         }
