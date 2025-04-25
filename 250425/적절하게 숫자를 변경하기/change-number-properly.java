@@ -21,11 +21,11 @@ public class Main {
         }
         // dp[0] 초기화
         for(int i = 0; i < 4; i++) {
-            if (seq[0] == i) {
+            if (seq[0] == i+1) {
                 dp[0][i][0] = 1;
             }
             else
-                dp[0][i][0] = 1;
+                dp[0][i][0] = 0;
         }
 
         for(int i = 1; i < N; i++) {
