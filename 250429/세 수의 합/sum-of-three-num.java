@@ -27,17 +27,17 @@ public class Main {
                     ans += (v * (v-1) * (v-2))/6;
                 }
 
-                if (i1 == i2) {
+                if (i1 == i2 && i2 != i3) {
                     if (map.get(i1) < 2)
                         continue;
                     int v = map.get(i1);
                     ans2 += ((v * (v-1))/2) * map.getOrDefault(i3, 0);
-                } else if (i1 == i3) {
+                } else if (i1 == i3 && i1 != i2) {
                     if (map.get(i1) < 2)
                         continue;
                     int v = map.get(i1);
                     ans2 += ((v * (v-1))/2) * map.getOrDefault(i2, 0);
-                } else if (i2 == i3) {
+                } else if (i2 == i3 && i1 != i2) {
                     if (map.get(i2) < 2)
                         continue;
                     int v = map.get(i2);
