@@ -5,15 +5,22 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         Set<Integer> set1 = new HashSet<>();
-        int[] arr1 = new int[n];
+        Set<Integer> set2 = new HashSet<>();
         for (int i = 0; i < n; i++) {
-            arr1[i] = sc.nextInt();
+            set1.add(sc.nextInt());
         }
         int m = sc.nextInt();
-        int[] arr2 = new int[m];
+        int[] arr = new int[m];
         for (int i = 0; i < m; i++) {
-            arr2[i] = sc.nextInt();
+            arr[i] = sc.nextInt();
         }
         // Please write your code here.
+        for(int i = 0; i < m; i++) {
+            if (set1.contains(arr[i])) {
+                System.out.print("1 ");
+            } else {
+                System.out.print("0 ");
+            }
+        }
     }
 }
