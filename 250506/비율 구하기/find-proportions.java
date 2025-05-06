@@ -5,7 +5,7 @@ public class Main {
         int n = sc.nextInt();
         String[] arr = new String[n];
         SortedMap<String, Integer> map = new TreeMap<>();
-        long cnt = 0L;
+        double cnt = 0;
         for (int i = 0; i < n; i++) {
             arr[i] = sc.next();
             map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
@@ -15,8 +15,8 @@ public class Main {
         Set<Map.Entry<String, Integer>> set = map.entrySet();
 
         for(Map.Entry<String, Integer> e : set) {
-            int cur = e.getValue();
-            double ans = Math.floor((cur * 100) / cnt);
+            double cur = (double)e.getValue();
+            double ans = ((cur * 100) / cnt);
 
             System.out.format("%s %.4f\n", e.getKey(), ans);
         }
