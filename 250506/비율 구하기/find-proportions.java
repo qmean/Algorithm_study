@@ -16,7 +16,7 @@ public class Main {
 
         for(Map.Entry<String, Integer> e : set) {
             int cur = e.getValue();
-            double ans = Math.round((cur * 100) / cnt);
+            double ans = Math.floor((cur * 100) / cnt);
 
             System.out.format("%s %.4f\n", e.getKey(), ans);
         }
