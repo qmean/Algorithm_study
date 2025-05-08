@@ -20,16 +20,19 @@ public class Main {
         q.add(1);
         while(!q.isEmpty()) {
             int cur = q.poll();
-            cnt++;
+            boolean remove = false;
             for(Set<Integer> set : list) {
                 if (!set.contains(cur))
                     continue;
+                remove = true;
                 set.remove(cur);
                 if (set.size() == 1) {
                     int i = set.iterator().next();
                     q.add(i);
                 }
             }
+            if (remove)
+                cnt++;
         }
 
         System.out.println(cnt);
