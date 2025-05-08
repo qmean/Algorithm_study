@@ -1,0 +1,20 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        TreeSet<Integer> set = new TreeSet<>();
+        for (int i = 0; i < n; i++)
+            set.add(sc.nextInt());
+        int[] queries = new int[m];
+        for (int i = 0; i < m; i++) {
+            Integer ans = set.ceiling(sc.nextInt());
+            if (ans == null) {
+                System.out.println(-1);
+            } else {
+                System.out.println(ans);
+            }
+        }
+    }
+}
