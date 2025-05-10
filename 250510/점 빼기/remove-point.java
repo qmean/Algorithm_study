@@ -24,7 +24,7 @@ public class Main {
         for (int i = 0; i < m; i++) {
             int a = sc.nextInt();
 
-            Pair p = Pair.of(a, Integer.MIN_VALUE);
+            Pair p = Pair.of(a, 0);
 
             Pair find = set.ceiling(p);
 
