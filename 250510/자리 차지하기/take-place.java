@@ -10,14 +10,14 @@ public class Main {
         for (int i = 1; i <= m; i++) {
             set.add(i);
         }
-        for (int i = 1; i <= n; i++) {
+        for (int i = 0; i < n; i++) {
             int a = sc.nextInt();
             Integer b = set.floor(a);
             if (b == null) {
-                System.out.println(i-1);
+                System.out.println(i);
                 return;
             }
-            set.remove(a);
+            set.remove(b);
         }
         System.out.println(n);
     }
