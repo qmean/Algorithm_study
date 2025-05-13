@@ -15,39 +15,33 @@ public class Main {
             int speed = sc.nextInt();
             Person p = Person.of(start, speed);
 
-            if (set.contains(p)) {
-                int findSpeed = set.ceiling(p).speed;
-                set.ceiling(p).speed = findSpeed > speed ? speed : findSpeed;
-                continue;
-            }
-
             boolean next = false;
             
-            // p 가 다른 사람의 그룹에 들어감
+            // // p 가 다른 사람의 그룹에 들어감
             Person cur = p;
-            while (set.higher(cur) != null) {
-                cur = set.higher(cur);
-                // 두 조건을 만족하는 경우 합쳐짐 (p를 집어넣지 않음)
-                if (cur.speed < p.speed) {
-                    if ((cur.start - p.start) / (p.speed - cur.speed) < t) {
-                        next = true;
-                        break;
-                    }
-                }
-            }
+            // while (set.higher(cur) != null) {
+            //     cur = set.higher(cur);
+            //     // 두 조건을 만족하는 경우 합쳐짐 (p를 집어넣지 않음)
+            //     if (cur.speed < p.speed) {
+            //         if ((cur.start - p.start) / (p.speed - cur.speed) < t) {
+            //             next = true;
+            //             break;
+            //         }
+            //     }
+            // }
 
-            if (next)
-                continue;
+            // if (next)
+            //     continue;
 
             // 다른 그룹이 p에 들어감
             cur = p;
             while (set.lower(cur) != null) {
                 cur = set.lower(cur);
                 // 두 조건을 만족하는 경우 합쳐짐 (p를 집어넣고 새로운걸 삭제)
-                if (cur.speed < p.speed) {
+                if (cur.speed > p.speed) {
                     if ((p.start - cur.start) / (cur.speed - p.speed) < t) {
-                        set.remove(cur);
-                        set.add(p);
+                        // set.remove(cur);
+                        // set.add(p);
                         next = true;
                         break;
                     }
