@@ -7,8 +7,8 @@ public class Main {
         int m = sc.nextInt();
         int[][] points = new int[n][2];
         PriorityQueue<Point> q = new PriorityQueue<>((p1, p2) -> {
-            long l1 = p1.x * p1.x + p1.y * p1.y;
-            long l2 = p2.x * p2.x + p2.y * p2.y;
+            long l1 = p1.x + p1.y;
+            long l2 = p2.x + p2.y;
             if (l1 < l2) {
                 return -1;
             } else if (l1 > l2) {
@@ -40,10 +40,10 @@ public class Main {
     }
 
     public static class Point {
-        long x;
-        long y;
+        int x;
+        int y;
 
-        public Point(long x, long y) {
+        public Point(int x, int y) {
             this.x = x;
             this.y = y;
         }
