@@ -23,7 +23,7 @@ public class Main {
             sum += arr[n-i];
             size++;
 
-            ans = Math.max(ans, (sum - q.peek()) / (size - 1));
+            ans = Math.max(ans, (double)(sum - q.peek()) / (double)(size - 1));
         }
 
         System.out.format("%.2f\n", ans);
