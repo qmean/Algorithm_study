@@ -26,6 +26,8 @@ public class Main {
 
         int np = 0;
         while (true) {
+            if (np >= n)
+                break;
             int curN = nArr[np];
             if (pq.size() == k && pq.peek() < curN + mArr[0]) {
                 break;
