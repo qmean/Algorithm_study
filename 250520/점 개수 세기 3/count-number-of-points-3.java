@@ -5,16 +5,17 @@ public class Main {
         int n = sc.nextInt();
         int q = sc.nextInt();
         int[] points = new int[n];
-        TreeSet<Integer> set = new TreeSet<>();
+        // TreeSet<Integer> set = new TreeSet<>();
         for (int i = 0; i < n; i++) {
-            set.add(sc.nextInt());
+            points[i] = sc.nextInt();
         }
+
+        Arrays.sort(points);
 
         Map<Integer, Integer> map = new HashMap<>();
         int cnt = 0;
-        for (Integer i : set) {
-            map.put(i, cnt);
-            cnt++;
+        for (int i = 0; i < points.length; i++) {
+            map.put(points[i], i);
         }
 
         for (int i = 0; i < q; i++) {
