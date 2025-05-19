@@ -13,7 +13,8 @@ public class Main {
                 int i1 = pq.poll();
                 int i2 = pq.poll();
                 int i3 = pq.poll();
-                long ans = i1 * i2 * i3;
+                long ans = (long)i1 * (long)i2;
+                ans *= (long)i3;
                 System.out.println(ans);
                 pq.add(i1);
                 pq.add(i2);
