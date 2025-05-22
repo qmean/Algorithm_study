@@ -28,6 +28,14 @@ public class Main {
             int a = queries[i][0];
             int b = queries[i][1];
 
+            if (map.ceilingKey(a) == null) {
+                System.out.println(0);
+                continue;
+            }
+            if (map.floorKey(b) == null) {
+                System.out.println(0);
+                continue;
+            }
             int min = map.get(map.ceilingKey(a));
             int max = map.get(map.floorKey(b));
 
