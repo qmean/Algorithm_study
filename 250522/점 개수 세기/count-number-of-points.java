@@ -42,13 +42,9 @@ public class Main {
             int min = map.get(ceiling);
             int max = map.get(floor);
 
-            System.out.println(max - min + 1);
-            // bw.write(String.valueOf(max - min + 1) + "\n");
-            // if (i % 10 == 0) {
-            //     bw.flush();
-            // }
+            bw.write((max - min + 1) + "\n");
+            bw.flush();
         }
-        // bw.flush();
-        // bw.close();
+        bw.close();
     }
 }
