@@ -17,10 +17,12 @@ public class Main {
         }
         // Please write your code here.
         
-        TreeMap<Integer, Integer> map = new TreeMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
+        TreeSet<Integer> nums = new TreeSet<>();
         int idx = 1;
         for (Integer i : set) {
             map.put(i, idx);
+            nums.add(i);
             idx++;
         }
 
@@ -28,16 +30,18 @@ public class Main {
             int a = queries[i][0];
             int b = queries[i][1];
 
-            if (map.ceilingKey(a) == null) {
+            Integer ceiling = nums.ceiling(a);
+            Integer floor = nums.floor(b);
+            if (ceiling == null) {
                 System.out.println(0);
                 continue;
             }
-            if (map.floorKey(b) == null) {
+            if (floor == null) {
                 System.out.println(0);
                 continue;
             }
-            int min = map.get(map.ceilingKey(a));
-            int max = map.get(map.floorKey(b));
+            int min = map.get(ceiling);
+            int max = map.get(floor);
 
             System.out.println(max - min + 1);
         }
