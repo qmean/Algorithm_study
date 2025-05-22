@@ -5,16 +5,15 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
         int Q = sc.nextInt();
-        TreeSet<Integer> set = new TreeSet<>();
+        TreeSet<Integer> nums = new TreeSet<>();
         for (int i = 0; i < N; i++) {
             set.add(sc.nextInt());
         }
         Map<Integer, Integer> map = new HashMap<>();
         TreeSet<Integer> nums = new TreeSet<>();
         int idx = 1;
-        for (Integer i : set) {
+        for (Integer i : nums) {
             map.put(i, idx);
-            nums.add(i);
             idx++;
         }
         for (int i = 0; i < Q; i++) {
@@ -23,11 +22,7 @@ public class Main {
 
             Integer ceiling = nums.ceiling(a);
             Integer floor = nums.floor(b);
-            if (ceiling == null) {
-                System.out.println(0);
-                continue;
-            }
-            if (floor == null) {
+            if (ceiling == null || floor == null) {
                 System.out.println(0);
                 continue;
             }
