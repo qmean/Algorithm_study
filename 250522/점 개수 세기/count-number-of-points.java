@@ -7,17 +7,23 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
+
         int N = Integer.parseInt(st.nextToken());
         int Q = Integer.parseInt(st.nextToken());
+
         TreeSet<Integer> set = new TreeSet<>();
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
-            set.add(Integer.parseInt(st.nextToken()));
+            Integer a = Integer.parseInt(st.nextToken());
+            // System.out.println(a);
+            set.add(a);
+            // set.add(Integer.parseInt(st.nextToken()));
         }
         Map<Integer, Integer> map = new HashMap<>();
         TreeSet<Integer> nums = new TreeSet<>();
         int idx = 1;
         for (Integer i : set) {
+            // System.out.println(i);
             map.put(i, idx);
             nums.add(i);
             idx++;
@@ -36,12 +42,13 @@ public class Main {
             int min = map.get(ceiling);
             int max = map.get(floor);
 
-            bw.write(String.valueOf(max - min + 1) + "\n");
-            if (i % 10 == 0) {
-                bw.flush();
-            }
+            System.out.println(max - min + 1);
+            // bw.write(String.valueOf(max - min + 1) + "\n");
+            // if (i % 10 == 0) {
+            //     bw.flush();
+            // }
         }
-        bw.flush();
-        bw.close();
+        // bw.flush();
+        // bw.close();
     }
 }
