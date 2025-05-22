@@ -7,10 +7,9 @@ public class Main {
         int Q = sc.nextInt();
         TreeSet<Integer> nums = new TreeSet<>();
         for (int i = 0; i < N; i++) {
-            set.add(sc.nextInt());
+            nums.add(sc.nextInt());
         }
         Map<Integer, Integer> map = new HashMap<>();
-        TreeSet<Integer> nums = new TreeSet<>();
         int idx = 1;
         for (Integer i : nums) {
             map.put(i, idx);
