@@ -28,7 +28,7 @@ public class Main {
             }
         }
 
-        int ans = 0;
+        long ans = 0;
         for(int i = 1; i < n-1; i++) {
             if (str.charAt(i) != 'O')
                 continue;
