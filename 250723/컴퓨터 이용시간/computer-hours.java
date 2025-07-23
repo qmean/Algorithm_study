@@ -16,7 +16,7 @@ public class Main {
         });
         int[] ans = new int[n];
         Queue<Integer> pq = new PriorityQueue<>();
-        for(int i = 1; i <= 5; i++) {
+        for(int i = 1; i <= n; i++) {
             pq.add(i);
         }
         for(Time t : list) {
