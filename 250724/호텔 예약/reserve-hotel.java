@@ -10,13 +10,20 @@ public class Main {
             list.add(new Reservation(s, 1));
             list.add(new Reservation(e, -1));
         }
-        list.sort((r1, r2) -> r1.date - r2.date);
+        list.sort((r1, r2) -> {
+            if (r1.date == r2.date) {
+                return r2.v - r1.v;
+            }
+            return r1.date - r2.date;
+        });
+        int curDate = 0;
         int max = Integer.MIN_VALUE;
         int sum = 0;
         for(Reservation r : list) {
-            sum += r.v;
             max = Math.max(sum, max);
+            sum += r.v;
         }
+        max = Math.max(sum, max);
         System.out.println(max);
     }
 
