@@ -29,23 +29,31 @@ public class Main {
         
         for(Point p : list) {
             if (p.v == 1) {
+
+                // 0 -> 1 (시작점)
                 if (set.isEmpty()) {
                     sumStart = p.x;
                     idxStart = p.x;
                     curIdx = p.idx;
                 }
+                // 1 -> 2 (계산)
                 else if (set.size() == 1) {
-                    delValue[set.iterator().next()] += idxStart - p.x;
+                    delValue[curIdx] += p.x - idxStart;
+                    // System.out.format("curIdx = %d idxStart = %d currentX = %d\n", curIdx, idxStart, p.x);
                 }
                 set.add(p.idx);
             } 
             else {
                 set.remove(p.idx);
+                // 1-> 0 (계산)
                 if (set.isEmpty()) {
                     sum += p.x - sumStart;
                     delValue[curIdx] += p.x - idxStart;
-                } else if (set.size() == 1) {
-                    delValue[curIdx] += p.x - idxStart;
+                    // System.out.format("curIdx = %d idxStart = %d currentX = %d\n", curIdx, idxStart, p.x);
+                } 
+                // 2 -> 1 (시작점)
+                else if (set.size() == 1) {
+                    // delValue[curIdx] += p.x - idxStart;
                     curIdx = set.iterator().next();
                     idxStart = p.x;
                 }
@@ -73,3 +81,11 @@ public class Main {
         }
     }
 }
+
+/**
+set의 원소 수에 따라 다르게 작동
+0 -> 1 (시작점)
+1 -> 0 (종료) => 계산해야함
+1 -> 2 (종료) => 계산해야함
+2 -> 1 (시작점)
+*/
