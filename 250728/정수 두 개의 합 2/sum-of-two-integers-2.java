@@ -13,17 +13,16 @@ public class Main {
         Arrays.sort(arr);
 
         int cnt = 0;
-        int j = 0;
+        int j = n-1;
         
         for(int i = 0; i < n; i++) {
-            // System.out.println("loop : " + i + " " + j);
-            while(j < n && arr[i] + arr[j] <= k) {
-                // System.out.println(i + " " + j);
-                j++;
+            while(j >= 0 && j > i && arr[i] + arr[j] > k) {
+                j--;
             }
-            if (j > i && arr[i] + arr[j-1] <= k) {
-                cnt += j -1 - i;
+            if (j <= i) {
+                break;
             }
+            cnt += j - i;
         }
 
         System.out.println(cnt);
