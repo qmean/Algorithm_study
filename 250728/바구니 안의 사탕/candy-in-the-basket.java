@@ -18,7 +18,7 @@ public class Main {
 
         int max = Integer.MIN_VALUE;
         int sum = 0;
-        for (int i = -k; i <= n; i++) {
+        for (int i = -k; i <= 1_000_000; i++) {
             sum += map.getOrDefault(i + k, 0);
             sum -= map.getOrDefault(i - k - 1, 0);
             max = Math.max(max, sum);
