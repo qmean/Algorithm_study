@@ -16,12 +16,13 @@ public class Main {
         int j = 0;
         
         for(int i = 0; i < n; i++) {
+            // System.out.println("loop : " + i + " " + j);
             while(j < n && arr[i] + arr[j] <= k) {
                 // System.out.println(i + " " + j);
-                if (i != j) {
-                    cnt++;
-                }
                 j++;
+            }
+            if (j > i && arr[i] + arr[j-1] <= k) {
+                cnt += j -1 - i;
             }
         }
 
