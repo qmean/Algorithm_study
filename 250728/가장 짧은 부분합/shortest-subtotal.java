@@ -10,16 +10,17 @@ public class Main {
             arr[i] = sc.nextInt();
         }
         
-        int sum = 0;
+        long sum = 0L;
         int min = Integer.MAX_VALUE;
-        int j = 0;
+        int j = 1;
         for (int i = 1; i <= n; i++) {
             // System.out.println(i + " " + j + " " + sum);
-            while(j + 1 <= n && sum + arr[j + 1] < s) {
-                sum += arr[j + 1];
+            while(j <= n && sum  < s) {
+                sum += arr[j];
                 j++;
             }
-            min = Math.min(min, j - i + 2);
+            if (sum >= s)
+                min = Math.min(min, j - i);
             sum -= arr[i];
         }
 
