@@ -13,7 +13,7 @@ public class Main {
         int j = 0;
         int max = Integer.MIN_VALUE;
         for(int i = 0; i < n; i++) {
-            while(j < n && set.size() == j - i) {
+            while(j < n && !set.contains(arr[j]) && set.size() == j - i) {
                 set.add(arr[j]);
                 j++;
             }
