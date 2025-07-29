@@ -39,7 +39,7 @@ public class Main {
                 b = jp.x;
                 j++;
             }
-            if (set.last() - set.first() >= d && i != j && j < n) {
+            if (set.last() - set.first() >= d && set.size() != 1) {
                 // System.out.format("****** i : %d j : %d ymax : %d ymin : %d\n", i, j, ymax, ymin);
                 // b = list.get(j).x;
                 min = Math.min(Math.abs(b-a), min);
