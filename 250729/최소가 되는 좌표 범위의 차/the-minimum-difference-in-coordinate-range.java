@@ -16,11 +16,11 @@ public class Main {
         
         int min = Integer.MAX_VALUE;
         list.sort((p1, p2) -> {
-            return p1.y - p2.y;
-            // if (p1.x == p2.x) {
-            //     return p1.y - p2.y;
-            // }
-            // return p1.x - p2.x;
+            // return p1.y - p2.y;
+            if (p1.x == p2.x) {
+                return p1.y - p2.y;
+            }
+            return p1.x - p2.x;
         });
         int ymin = Integer.MAX_VALUE;
         int ymax = Integer.MIN_VALUE;
