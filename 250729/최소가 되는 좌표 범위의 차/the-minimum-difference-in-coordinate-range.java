@@ -39,9 +39,9 @@ public class Main {
                 ymin = Math.min(ymin, jp.y);
                 j++;
             }
-            b = list.get(j).x;
-            if (ymax - ymin >= d && i != j) {
+            if (ymax - ymin >= d && i != j && j < n) {
                 // System.out.format("****** i : %d j : %d ymax : %d ymin : %d\n", i, j, ymax, ymin);
+                b = list.get(j).x;
                 min = Math.min(Math.abs(b-a), min);
             }
         }
