@@ -26,24 +26,25 @@ public class Main {
         int a;
         int b = -1;
         int j = 0;
+        TreeSet<Integer> set = new TreeSet<>();
         for(int i = 0; i < n; i++) {
             Point ip = list.get(i);
             a = ip.x;
-            ymax = Math.max(ymax, ip.y);
-            ymin = Math.min(ymin, ip.y);
+            set.add(ip.y);
             // System.out.format("====== i : %d j : %d ymax : %d ymin : %d\n", i, j, ymax, ymin);
-            while(j < n && ymax - ymin < d) {
+            while(j < n && set.last() - set.first() < d) {
                 // System.out.format("i : %d j : %d ymax : %d ymin : %d\n", i, j, ymax, ymin);
                 Point jp = list.get(j);
-                ymax = Math.max(ymax, jp.y);
-                ymin = Math.min(ymin, jp.y);
+                set.add(jp.y);
+                b = jp.x;
                 j++;
             }
-            if (ymax - ymin >= d && i != j && j < n) {
+            if (set.last() - set.first() >= d && i != j && j < n) {
                 // System.out.format("****** i : %d j : %d ymax : %d ymin : %d\n", i, j, ymax, ymin);
-                b = list.get(j).x;
+                // b = list.get(j).x;
                 min = Math.min(Math.abs(b-a), min);
             }
+            set.remove(ip.y);
         }
 
         min = min == Integer.MAX_VALUE ? -1 : min;
