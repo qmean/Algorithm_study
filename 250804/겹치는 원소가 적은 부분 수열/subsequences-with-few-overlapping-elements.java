@@ -32,6 +32,8 @@ public class Main {
             }
             if (maxnum > k) {
                 max = Math.max(max, j - i - 1);
+            } else if (maxnum <= k && j == n) {
+                max = Math.max(max, j - i);
             }
 
             Pair p = new Pair(arr[i], map.get(arr[i]));
@@ -42,6 +44,7 @@ public class Main {
             set.add(p);
             maxnum = set.first().value;
         }
+        // System.out.println(j);
         System.out.println(max);
     }
 
