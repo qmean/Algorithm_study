@@ -19,21 +19,27 @@ public class Main {
         Arrays.fill(ans, Integer.MAX_VALUE);
         // stations 인덱스
         int j = 0;
-        int max = Integer.MIN_VALUE;
-        // 현재 station
-        int cur = stations[j];
         for(int i = 0; i < n; i++) {
-            while(j < m && Math.abs(cur - fires[i]) < ans[i]) {
-                ans[i] = Math.abs(cur - fires[i]);
-                if (j < m-1) {
-                    j++;
-                    cur = stations[j];
-                }
+            while(j < m && stations[j] < fires[i]) {
+                if (j == m-1)
+                    break;
+                j++;
             }
+            ans[i] = Math.abs(stations[j] - fires[i]);
+        }
+        j = m-1;
+        for(int i = n-1; i >= 0; i--) {
+            while(j >= 0 && stations[j] > fires[i]) {
+                if (j == 0)
+                    break;
+                j--;
+            }
+            ans[i] = Math.min(Math.abs(stations[j] - fires[i]), ans[i]);
         }
 
-        for(int i = 0 ; i < n; i++) {
-            max = Math.max(max, ans[i]);            
+        int max = Integer.MIN_VALUE;
+        for(int i = 0; i < n; i++) {
+            max = Math.max(max, ans[i]);
         }
 
         System.out.println(max);
