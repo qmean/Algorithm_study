@@ -1,5 +1,4 @@
 import java.util.*;
-
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -37,7 +36,7 @@ public class Main {
         cnt += R[1] != -1 ? 1 : 0;
         cnt += L[m-2] != -1 ? 1 : 0;
         for (int i = 1; i < m-1; i++) {
-            if (L[i-1] != 0 && R[i+1] != -1 && L[i-1] < R[i+1])
+            if (L[i-1] != -1 && R[i+1] != -1 && L[i-1] < R[i+1])
                 cnt++;
         }
         System.out.println(cnt);
