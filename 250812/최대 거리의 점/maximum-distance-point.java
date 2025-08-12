@@ -16,14 +16,13 @@ public class Main {
         }
         
         int start = 0;
-        int end = max - min;
+        int end = 1_000_000_000;
         int ans = 0;
         while (start <= end) {
             // System.out.println("start " + start + " end " + end);
             int dist = (start + end) / 2;
-            int cnt = 0;
+            int cnt = 1;
             int idx = 0;
-            // int curMin = Integer.MAX_VALUE;
             // System.out.println(dist + "=======");
             for(int i = 1; i < n; i++) {
                 if (points[i] - points[idx] >= dist) {
