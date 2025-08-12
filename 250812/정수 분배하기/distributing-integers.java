@@ -15,7 +15,7 @@ public class Main {
         int end = max;
         // 정수 k
         int mid = 1;
-        int ans = Integer.MIN_VALUE;
+        int ans = 0;
         while (start <= end) {
             mid = (start + end) / 2;
             int cnt = 0;
