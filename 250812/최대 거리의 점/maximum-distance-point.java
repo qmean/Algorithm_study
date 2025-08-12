@@ -14,7 +14,7 @@ public class Main {
             max = Math.max(max, points[i]);
             min = Math.min(min, points[i]);
         }
-        Arrays.sort(points[i]);
+        Arrays.sort(points);
         
         int start = 0;
         int end = 1_000_000_000;
