@@ -17,7 +17,7 @@ public class Main {
         
         int start = 0;
         int end = max - min;
-        int ans = Integer.MIN_VALUE;
+        int ans = 0;
         while (start <= end) {
             // System.out.println("start " + start + " end " + end);
             int dist = (start + end) / 2;
@@ -38,7 +38,6 @@ public class Main {
             } else {
                 end = dist - 1;
             }
-            // System.out.println("new======== start " + start + " end " + end);
         }
         System.out.println(ans);
     }
