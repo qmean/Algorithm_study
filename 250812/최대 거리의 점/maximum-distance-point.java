@@ -21,7 +21,7 @@ public class Main {
         while (start <= end) {
             // System.out.println("start " + start + " end " + end);
             int dist = (start + end) / 2;
-            int cnt = 1;
+            int cnt = 0;
             int idx = 0;
             // int curMin = Integer.MAX_VALUE;
             // System.out.println(dist + "=======");
