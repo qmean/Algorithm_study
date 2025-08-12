@@ -10,7 +10,11 @@ public class Main {
             mid = (start + end) / 2;
             long value = mid - mid/3 - mid/5 + mid/15;
             if (value == n) {
-                break;
+                if (mid%3 != 0 && mid%5 != 0) {
+                    break;
+                } else {
+                    end = mid - 1;
+                }
             } else if (value > n) {
                 end = mid - 1;
             } else {
