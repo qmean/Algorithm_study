@@ -12,8 +12,8 @@ public class Main {
         }
 
         long start = 0L;
-        long end = MAX_TIME * n;
-        long min = Integer.MAX_VALUE;
+        long end = (long)10e14;
+        long min = Long.MAX_VALUE;
         while (start <= end) {
             long mid = (start + end) / 2;
             long value = 0L;
