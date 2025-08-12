@@ -22,21 +22,18 @@ public class Main {
             // System.out.println("start " + start + " end " + end);
             int dist = (start + end) / 2;
             int cnt = 1;
-            Integer cur = points[0];
-            int curMin = Integer.MAX_VALUE;
+            int idx = 0;
+            // int curMin = Integer.MAX_VALUE;
             // System.out.println(dist + "=======");
-            while (cur != null) {
-                Integer ni = set.ceiling(cur + dist);
-                // System.out.println(cur + " " + ni + " " +curMin);
-                if (ni != null) {
-                    curMin = Math.min(curMin, ni - cur);
+            for(int i = 1; i < n; i++) {
+                if (points[i] - points[idx] >= dist) {
                     cnt++;
+                    idx = i;
                 }
-                cur = ni;
             }
             // System.out.println("cnt == "+ cnt);
             if (cnt >= m) {
-                ans = Math.max(ans, curMin);
+                ans = Math.max(ans, dist);
                 start = dist + 1;
             } else {
                 end = dist - 1;
