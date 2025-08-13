@@ -14,22 +14,22 @@ public class Main {
         for (int i = 0; i < n; i++)
             for (int j = 0; j < n; j++)
                 board[i][j] = sc.nextInt();
-        int bound = (n * n / 2) + (n % 2 == 0 ? 0 : 1);
+        int lowerBound = (n * n / 2) + (n % 2 == 0 ? 0 : 1);
         int start = 0;
         int end = (int)10e6;
         int min = Integer.MAX_VALUE;
         while(start <= end) {
             int mid = (start + end) / 2;
             int max = Integer.MIN_VALUE;
+            visited = new boolean[n][n];
             for(int i = 0; i < n; i++) {
                 for(int j = 0; j < n; j++) {
-                    for(int k = 0; k < n; k++)
-                        Arrays.fill(visited[k], false);
-                    max = Math.max(max, dfs(i, j, mid));
+                    if (!visited[i][j])
+                        max = Math.max(max, dfs(i, j, mid));
                 }
             }
             
-            if (max >= bound) {
+            if (max >= lowerBound) {
                 min = Math.min(min, mid);
                 end = mid - 1;
             } else {
