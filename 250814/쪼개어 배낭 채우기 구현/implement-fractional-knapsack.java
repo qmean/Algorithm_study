@@ -21,7 +21,7 @@ public class Main {
         double sum = 0;
         int mount = 0;
         int idx = 0;
-        while(mount != m) {
+        while(mount != m && idx < n) {
             Gem cur = arr[idx];
             idx++;
             int curW = Math.min(m - mount, cur.w);
