@@ -39,7 +39,7 @@ public class Main {
         int br = find(b);
         if (ar < br) {
             uf[br] = ar;
-        } else if (a > b) {
+        } else if (ar > br) {
             uf[ar] = br;
         }
     }
