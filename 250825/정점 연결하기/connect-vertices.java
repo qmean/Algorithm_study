@@ -29,11 +29,7 @@ public class Main {
     static int find(int d) {
         if (uf[d] == d)
             return d;
-        int ret = find(uf[d]);
-        if (uf[d] != ret) {
-            set.remove(uf[d]);
-            uf[d] = ret;
-        }
+        uf[d] = find(uf[d]);
         return uf[d];
     }
 
@@ -43,9 +39,11 @@ public class Main {
         if (ar < br) {
             uf[br] = ar;
             set.remove(br);
+            set.remove(b);
         } else if (a > b) {
             uf[ar] = br;
             set.remove(ar);
+            set.remove(a);
         }
     }
 }
