@@ -15,10 +15,9 @@ public class Main {
         int start = 0;
         int end = n;
 
-        int max = Integer.MIN_VALUE;
+        int max = 0;
         while(start <= end) {
             int mid = (start + end) / 2;
-            // System.out.format("st : %d end : %d mid : %d\n", start, end, mid);
             int bIdx = 0;
             Set<Integer> set = new HashSet<>();
             for(int i = 0; i < mid; i++) {
