@@ -36,7 +36,7 @@ public class Main {
     static void union(int a, int b) {
         int ar = find(a);
         int br = find(b);
-        if (a < b) {
+        if (ar < br) {
             uf[br] = ar;
             // set.remove(br);
         } else if (a > b) {
