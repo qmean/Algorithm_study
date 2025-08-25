@@ -26,7 +26,9 @@ public class Main {
     static int find(int d) {
         if (uf[d] == d)
             return d;
-        uf[d] = find(uf[d]);
+        int ret = find(uf[d]);
+        if (ret != uf[d])
+            set.remove(uf[d]);
         return uf[d];
     }
 
