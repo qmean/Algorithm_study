@@ -10,12 +10,11 @@ public class Main {
         int n = sc.nextInt();
         int m = sc.nextInt();
 
-        n = 32001;
-        edges = new ArrayList[32001];
-        indegree = new int[32001];
+        edges = new ArrayList[n+1];
+        indegree = new int[n+1];
         Arrays.fill(indegree, -1);
 
-        for (int i = 1; i < n; i++)
+        for (int i = 1; i <= n; i++)
             edges[i] = new ArrayList<>();
 
         for (int i = 0; i < m; i++) {
@@ -31,7 +30,7 @@ public class Main {
         
         Queue<Integer> pq = new PriorityQueue<>(Comparator.naturalOrder());
 
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             if (indegree[i] == 0)
                 pq.add(i);
         }
