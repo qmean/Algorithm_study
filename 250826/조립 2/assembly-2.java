@@ -47,7 +47,6 @@ public class Main {
             for(int next : edges[cur]) {
                 ndegree[next]--;
                 if (ndegree[next] == 0) {
-                    have[next] = true;
                     q.add(next);
                 }
             }
