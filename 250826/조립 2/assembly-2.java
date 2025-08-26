@@ -2,7 +2,6 @@ import java.util.*;
 
 public class Main {
 
-    static Queue<Integer> print = new PriorityQueue<>();
     static int[] ndegree;
     static ArrayList<Integer>[] edges;
     static boolean[] have;
@@ -42,20 +41,26 @@ public class Main {
 
         while(!q.isEmpty()) {
             int cur = q.poll();
-            print.add(cur);
 
             for(int next : edges[cur]) {
                 ndegree[next]--;
                 if (ndegree[next] == 0) {
+                    have[next] = true;
                     q.add(next);
                 }
             }
         }
 
-        System.out.println(print.size());
-        while(!print.isEmpty()) {
-            System.out.print(print.poll() + " ");
+        
+        StringBuilder sb = new StringBuilder();
+        int cnt = 0;
+        for (int i = 1; i <= n; i++) {
+            if (have[i]) {
+                cnt++;
+                sb.append(i + " ");
+            }
         }
-        System.out.println();
+        System.out.println(cnt);
+        System.out.println(sb);
     }
 }
