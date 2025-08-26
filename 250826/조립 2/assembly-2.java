@@ -28,21 +28,25 @@ public class Main {
         }
 
         int parts = sc.nextInt();
+        Queue<Integer> q = new LinkedList<>();
         for (int i = 0; i < parts; i++) {
             int x = sc.nextInt();
             have[x] = true;
+            q.add(x);
         }
         
-        Queue<Integer> q = new LinkedList<>();
-        for (int i = 1; i <= n; i++) {
-            if (ndegree[i] == 0 && have[i])
-                q.add(i);
-        }
+        
+        // for (int i = 1; i <= n; i++) {
+        //     if (ndegree[i] == 0 && have[i])
+                
+        // }
 
         while(!q.isEmpty()) {
             int cur = q.poll();
 
             for(int next : edges[cur]) {
+                if (have[next])
+                    continue;
                 ndegree[next]--;
                 if (ndegree[next] == 0) {
                     have[next] = true;
