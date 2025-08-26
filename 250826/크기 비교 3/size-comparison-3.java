@@ -12,7 +12,6 @@ public class Main {
 
         edges = new ArrayList[n+1];
         indegree = new int[n+1];
-        Arrays.fill(indegree, -1);
 
         for (int i = 1; i <= n; i++)
             edges[i] = new ArrayList<>();
@@ -20,10 +19,6 @@ public class Main {
         for (int i = 0; i < m; i++) {
             int a = sc.nextInt();
             int b = sc.nextInt();
-            if (indegree[a] == -1)
-                indegree[a] = 0;
-            if (indegree[b] == -1)
-                indegree[b] = 0;
             edges[a].add(b);
             indegree[b]++;
         }
