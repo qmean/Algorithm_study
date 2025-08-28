@@ -40,6 +40,8 @@ public class Main {
             visited[minidx] = true;
             ans += dist[minidx];
             for (int j = 1; j <= n; j++) {
+                if (graph[minidx][j] == 0)
+                    continue;
                 dist[j] = Math.min(dist[j], graph[minidx][j]);
             }
         }
