@@ -18,8 +18,8 @@ public class Main {
             int u = sc.nextInt();
             int v = sc.nextInt();
             int w = sc.nextInt();
-            graph[u][v] = w;
-            graph[v][u] = w;
+            graph[u][v] = graph[u][v] == 0 ? w : Math.min(graph[u][v], w);
+            graph[v][u] = graph[v][u] == 0 ? w : Math.min(graph[v][u], w);
         }
         
         for (int i = 1; i <= n; i++) {
