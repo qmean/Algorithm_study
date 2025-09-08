@@ -3,13 +3,14 @@ import java.util.*;
 public class Main {
 
     static int[] uf;
+    static int[] cost;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int m = sc.nextInt();
         int k = sc.nextInt();
-        int[] cost = new int[n];
+        cost = new int[n];
         uf = new int[n];
         PriorityQueue<Segment> pq = new PriorityQueue<>((s1, s2) -> s1.cost - s2.cost);
         for (int i = 0; i < n; i++) {
@@ -29,14 +30,9 @@ public class Main {
             Segment s2 = pq.poll();
             if (union(s1.idx, s2.idx)) {
                 sum += s1.cost + s2.cost;
-                if (s1.cost < s2.cost) {
-                    pq.add(new Segment(s1.idx, s1.cost));
-                } else {
-                    pq.add(new Segment(s2.idx, s2.cost));
-                }
             }
+            pq.add(new Segment(find(s1.idx), cost[find(s1.idx)]));
         }
-        // System.out.println(sum);
         System.out.println(sum > k ? "NO" : sum);
     }
 
@@ -52,7 +48,10 @@ public class Main {
         int br = find(b);
         if (ar == br)
             return false;
-        uf[Math.max(ar, br)] = Math.min(ar, br);
+        if (cost[ar] < cost[br])
+            uf[br] = ar;
+        else
+            uf[ar] = br;
         return true;
     }
 
