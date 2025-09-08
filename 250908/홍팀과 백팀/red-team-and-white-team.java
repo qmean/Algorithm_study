@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 public class Main {
 
     static int[] uf;
@@ -7,32 +7,33 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int m = sc.nextInt();
+        ArrayList<Integer>[] map = new ArrayList[n];
         
         final int TEAM_A = n;
         final int TEAM_B = n+1;
-        uf = new int[n+2];
-        for (int i = 0; i <= n+1; i++) {
+        uf = new int[n];
+        for (int i = 0; i < n; i++) {
             uf[i] = i;
+            map[i] = new ArrayList<>();
         }
         boolean flag = true;
         for (int i = 0; i < m; i++) {
             int a = sc.nextInt()-1;
             int b = sc.nextInt()-1;
 
-            int ar = find(a);
-            int br = find(b);
-            if (ar == a && br == b) {
-                union(a, TEAM_A);
-                union(b, TEAM_B);
-            } else if (ar == br) {
-                flag = false;
+            map[a].add(b);
+            map[b].add(a);
+        }
+
+        for (int i = 0; i < n; i++) {
+            List<Integer> list = map[i];
+            if (!flag)
                 break;
-            } else if (ar == a && br != b) {
-                int newTeam = br == TEAM_A ? TEAM_B : TEAM_A;
-                union(a, newTeam);
-            } else if (br == b && ar != a) {
-                int newTeam = ar == TEAM_A ? TEAM_B : TEAM_A;
-                union(b, newTeam);
+            for (int j = 0; j < list.size() - 1; j++) {
+                if (!union(list.get(j), list.get(j+1))) {
+                    flag = false;
+                    break;
+                }
             }
         }
 
