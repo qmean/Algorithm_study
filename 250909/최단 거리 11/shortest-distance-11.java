@@ -50,7 +50,10 @@ public class Main {
                 int newValue = edge.v + curValue;
 
                 if (dp[nextIdx] >= newValue) {
-                    src[nextIdx] = Math.min(src[nextIdx], curIdx);
+                    if (dp[nextIdx] == newValue)
+                        src[nextIdx] = Math.min(src[nextIdx], curIdx);
+                    else
+                        src[nextIdx] = curIdx;
                     dp[nextIdx] = newValue;
                     pq.add(new Segment(nextIdx, newValue));
                 }
@@ -58,14 +61,6 @@ public class Main {
         }
         
         System.out.println(dp[a]);
-
-        // for (int i = 0; i < n; i++) {
-        //     System.out.println(src[i]);
-        // }
-
-        // for (int i = 0; i < n; i++) {
-        //     System.out.println(dp[i]);
-        // }
 
         int curIdx = a;
         while (curIdx != b) {
