@@ -44,13 +44,14 @@ public class Main {
                 int newA = Math.min(edge.c, cur.a);
                 int newB = cur.b + edge.l;
                 double newCost = (double)newB + (double)x / newA;
-                if (dp[dest] > newCost) {
+                if (dp[dest] >= newCost) {
                     dp[dest] = newCost;
                     pq.add(new Node(dest, newCost, newA, newB));
                 }
             }
         }
 
+        // Arrays.stream(dp).forEach(a -> System.out.println((int)a));
         // System.out.format("%.0f\n", dp[n-1]);
         System.out.println((int)Math.floor(dp[n-1]));
     }
