@@ -47,8 +47,8 @@ public class Main {
                 minValue = edge.cost;
             }
         }
-        dp[end] = minValue;
-        pq.add(new Segment(end, minValue, minBus));
+        dp[end] = 0;
+        pq.add(new Segment(end, 0, -1));
 
         while(!pq.isEmpty()) {
             Segment cur = pq.poll();
@@ -68,8 +68,9 @@ public class Main {
                     dp[nextStop] = newCost;
                     time[nextStop] = time[curStop] + 1;
                     pq.add(new Segment(nextStop, newCost, nextBus));
-                } else if (dp[nextStop] == newCost) {
+                } else if (dp[nextStop] == newCost && time[nextStop] > time[curStop] + 1) {
                     time[nextStop] = Math.min(time[nextStop], time[curStop] + 1);
+                    pq.add(new Segment(nextStop, newCost, nextBus));
                 }
             }
         }
