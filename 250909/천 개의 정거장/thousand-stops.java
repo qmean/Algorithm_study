@@ -3,7 +3,7 @@ import java.util.*;
 public class Main {
 
     static ArrayList<Segment>[] edges;
-    static int[] dp;
+    static long[] dp;
     static int[] time;
     static int[] cost;
 
@@ -14,14 +14,14 @@ public class Main {
         int N = sc.nextInt();
 
         edges = new ArrayList[1000];
-        dp = new int[1000];
+        dp = new long[1000];
         time = new int[1000];
         cost = new int[N];
 
         for (int i = 0; i < 1000; i++) {
             edges[i] = new ArrayList<>();
         }
-        Arrays.fill(dp, (int)1e9);
+        Arrays.fill(dp, (long)1e13);
         Arrays.fill(time, (int)1e9);
 
         for (int i = 0; i < N; i++) {
@@ -74,7 +74,10 @@ public class Main {
             }
         }
         
-        System.out.println(dp[start]+ " " + time[start]);
+        if (dp[start] == (long)1e13)
+            System.out.println("-1 -1");
+        else
+            System.out.println(dp[start]+ " " + time[start]);
     }
 
     static class Segment {
