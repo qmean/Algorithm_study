@@ -3,8 +3,8 @@ import java.util.*;
 public class Main {
 
     static int[][] map;
+    static boolean[][] red;
     static int[][] ans;
-    static boolean[] red;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -20,10 +20,8 @@ public class Main {
             Arrays.fill(ans[i], (int)1e9);
             map[i][i] = 0;
         }
-        red = new boolean[n];
 
         for (int i = 0; i < P; i++) {
-            red[i] = true;
             ans[i][i] = 0;
         }
             
@@ -32,22 +30,22 @@ public class Main {
             int v = sc.nextInt() - 1;
             int w = sc.nextInt();
             if (u <= P || v <= P)
-                ans[u][v] = w;
+                ans[u][v] = Math.min(map[u][v], w);
             map[u][v] = Math.min(map[u][v], w);
         }
 
-        long cnt = 0L;
         for (int i = 0 ; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 for (int k = 0; k < n; k++) {
+                    map[j][k] = Math.min(map[j][k], map[j][i] + map[i][k]);
                     if (i > P && j > P && k > P)
                         continue;
-                    map[j][k] = Math.min(map[j][k], map[j][i] + map[i][k]);
                     ans[j][k] = map[j][k];
                 }
             }
         }
 
+        long cnt = 0L;
         long sum = 0L;
         for (int i = 0; i < Q; i++) {
             int x = sc.nextInt() - 1;
