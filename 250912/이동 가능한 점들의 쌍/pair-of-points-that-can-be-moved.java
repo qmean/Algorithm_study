@@ -10,7 +10,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int M = sc.nextInt();
-        int P = sc.nextInt() - 1;
+        int P = sc.nextInt();
         int Q = sc.nextInt();
 
         map = new int[n][n];
@@ -24,21 +24,22 @@ public class Main {
         for (int i = 0; i < P; i++) {
             ans[i][i] = 0;
         }
-            
+
         for (int i = 0; i < M; i++) {
             int u = sc.nextInt() - 1;
             int v = sc.nextInt() - 1;
             int w = sc.nextInt();
-            if (u <= P || v <= P)
+            if (u < P || v < P)
                 ans[u][v] = Math.min(map[u][v], w);
             map[u][v] = Math.min(map[u][v], w);
         }
 
-        for (int i = 0 ; i < n; i++) {
+        for (int i = 0 ; i < P; i++) {
             for (int j = 0; j < n; j++) {
                 for (int k = 0; k < n; k++) {
                     map[j][k] = Math.min(map[j][k], map[j][i] + map[i][k]);
-                    if (i > P && j > P && k > P)
+                    ans[j][k] = Math.min(ans[j][k], map[j][i] + map[i][k]);
+                    if (i >= P && j >= P && k >= P)
                         continue;
                     ans[j][k] = map[j][k];
                 }
