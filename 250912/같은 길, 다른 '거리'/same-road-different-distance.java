@@ -31,20 +31,18 @@ public class Main {
         }
         
         for (int i = 0; i < n; i++) {
-            Edge amin = null;
-            Edge bmin = null;
+            int aMin = Integer.MAX_VALUE;
+            int bMin = Integer.MAX_VALUE;
             for (Edge e : edges2[i]) {
-                if (amin == null || amin.ac > e.ac) {
-                    amin = e;
-                }
-                if (bmin == null || bmin.bc > e.bc) {
-                    bmin = e;
-                }
+                aMin = Math.min(e.ac, aMin);
+                bMin = Math.min(e.bc, bMin);
             }
-            if (amin != null)
-                amin.counter -= 1;
-            if (bmin != null)
-                bmin.counter -= 1;
+            for (Edge e : edges2[i]) {
+                if (e.ac == aMin)
+                    e.counter -= 1;
+                if (e.bc == bMin)
+                    e.counter -= 1;
+            }
         }
 
         // for (int i = 0; i < n; i++) {
@@ -70,10 +68,7 @@ public class Main {
                 }
             }
         }
-        // for(int i = 0; i < n; i++)
-        //     System.out.print(dp[i] + " ");
-        // System.out.println();
-
+        
         System.out.println(dp[0]);
     }
 
