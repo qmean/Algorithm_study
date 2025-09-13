@@ -9,8 +9,10 @@ public class Main {
         int n = sc.nextInt();
 
         map = new int[n][n];
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) {
             Arrays.fill(map[i], (int)1e9);
+            map[i][i] = 0;
+        }
 
         int m = sc.nextInt();
         int v1 = sc.nextInt() - 1;
