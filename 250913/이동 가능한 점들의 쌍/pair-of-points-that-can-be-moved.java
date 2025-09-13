@@ -41,17 +41,6 @@ public class Main {
             for (int j = 0; j < n; j++) {
                 for (int k = 0; k < n; k++) {
                     map[j][k] = Math.min(map[j][k], map[j][i] + map[i][k]);
-                    ans[j][k] = Math.min(ans[j][k], ans[j][i] + ans[i][k]);
-                }
-            }
-        }
-
-        for (int i = 0 ; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                for (int k = 0; k < n; k++) {
-                    // map[j][k] = Math.min(map[j][k], map[j][i] + map[i][k]);
-                    if (i < P || j < P || k < P)
-                        ans[j][k] = Math.min(ans[j][k], map[j][i] + map[i][k]);
                 }
             }
         }
@@ -62,9 +51,14 @@ public class Main {
             int x = sc.nextInt() - 1;
             int y = sc.nextInt() - 1;
             
-            if (ans[x][y] != (int)1e9) {
-                sum += ans[x][y];
-                cnt += 1;
+            int dist = (int)1e9;
+            for (int j = 0; j < P; j++) {
+                dist = Math.min(dist, map[x][j] + map[j][y]);
+            }
+
+            if (dist != (int)1e9) {
+                sum += dist;
+                cnt++;
             }
         }
 
@@ -77,5 +71,15 @@ public class Main {
 
         System.out.println(cnt);
         System.out.println(sum);
+    }
+
+    static class Segment {
+        int v;
+        boolean red;
+
+        public Segment(int v, boolean b) {
+            this.v = v;
+            this.red = b;
+        }
     }
 }
