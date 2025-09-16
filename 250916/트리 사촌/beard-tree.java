@@ -41,18 +41,17 @@ public class Main {
         while (!set.isEmpty()) {
             Set<Integer> tmp = set;
             set = new HashSet<>();
-
-            int sum = 0;
-            // tmp : 같은 depth 에 있는 node들
-            for (int i : tmp) {
-                sum += edge[i].size();
-            }
             
             for (int i : tmp) {
-                // 각 node에 대해 자식들의 리스트 cur
-                for (int cur : edge[i]) {
-                    set.add(cur);
-                    cnt[cur] = sum - edge[i].size();
+                int sum = 0;
+                for (int child : edge[i]) {
+                    sum += edge[child].size();
+                }
+                for (int child : edge[i]) {
+                    for (int gChild : edge[child]) {
+                        cnt[gChild] = sum - edge[child].size();
+                    }
+                    set.add(child);
                 }
             }
         }
