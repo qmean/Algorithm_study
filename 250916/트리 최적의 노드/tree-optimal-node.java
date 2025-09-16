@@ -41,7 +41,8 @@ public class Main {
         Arrays.fill(visited, -1);
         Arrays.fill(after , -1);
         ArrayList<Integer> path = new ArrayList<>();
-        dfs(maxNode, 0);
+        int dist = dfs(maxNode, 0);
+        // System.out.println(dist);
         int cur = maxNode;
         while (cur != -1) {
             // System.out.print(cur + " ");
@@ -72,7 +73,8 @@ public class Main {
             int v2 = dfs(c2, 0);
             ans = Math.min(v1,v2);
         }
-        System.out.println(ans-1);
+        System.out.println(ans);
+        // System.out.println((dist + 1) / 2);
 
     }
 
@@ -97,6 +99,6 @@ public class Main {
             after[node] = nextIdx;
         }
 
-        return value + max;
+        return max;
     }
 }
