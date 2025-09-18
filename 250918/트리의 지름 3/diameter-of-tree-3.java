@@ -39,14 +39,27 @@ public class Main {
             if (maxV == visited[i])
                 list.add(i);
         }
-        for (int idx : list) {
-            Arrays.fill(visited , -1);
-            dfs(idx, 0);
-            for (int i = 0; i < n; i++) {
-                pq.add(visited[i]);
-            }      
+        int idx = list.get(0);
+        list.clear();
+        Arrays.fill(visited , -1);
+        dfs(idx, 0);
+        for (int i = 0; i < n; i++) {
+            pq.add(visited[i]);
         }
         
+        int max = pq.poll();
+        idx = -1;
+        for (int i = 0; i < n; i++) {
+            if (max == visited[i]) {
+                idx = i;
+                break;
+            }
+        }
+        Arrays.fill(visited , -1);
+        dfs(idx, 0);
+        for (int i = 0; i < n; i++) {
+            pq.add(visited[i]);
+        }
         pq.poll();
         System.out.println(pq.poll());
     }
