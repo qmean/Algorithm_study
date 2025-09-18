@@ -26,22 +26,27 @@ public class Main {
         Arrays.fill(visited , -1);
         dfs(0, 0);
 
-        int maxIdx = -1;
         int maxV = Integer.MIN_VALUE;
         for (int i = 0; i < n; i++) {
             if (maxV < visited[i]) {
                 maxV = visited[i];
-                maxIdx = i;
             }
         }
 
-        Arrays.fill(visited , -1);
-        dfs(maxIdx, 0);
-
+        List<Integer> list = new ArrayList<>();
         PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
         for (int i = 0; i < n; i++) {
-            pq.add(visited[i]);
-        }  
+            if (maxV == visited[i])
+                list.add(i);
+        }
+        for (int idx : list) {
+            Arrays.fill(visited , -1);
+            dfs(idx, 0);
+            for (int i = 0; i < n; i++) {
+                pq.add(visited[i]);
+            }      
+        }
+        
         pq.poll();
         System.out.println(pq.poll());
     }
