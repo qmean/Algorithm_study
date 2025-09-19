@@ -20,6 +20,7 @@ public class Main {
                 if (visited[find]) {
                     valid = false;
                     lastNode = find;
+                    break;
                 }
                 find /= 2;
             }
