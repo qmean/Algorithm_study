@@ -9,24 +9,20 @@ public class Main {
 
         Set<Integer> visited = new HashSet<>();
         for (int i = 0; i < q; i++) {
-            int a = sc.nextInt();
-            int find = a;
-            
-            boolean valid = true;
-            int lastNode = -1;
+            int find = sc.nextInt();
+            int a = find;
+            int print = 0;
+
             while (find != 1) {
                 if (visited.contains(find)) {
-                    lastNode = find;
-                    valid = false;
+                    print = find;
                 }
                 find /= 2;
             }
-            if (valid) {
-                System.out.println(0);
+            System.out.println(print);
+            if (print == 0) {
                 visited.add(a);
             }
-            else
-                System.out.println(lastNode);
         }
     }
     
