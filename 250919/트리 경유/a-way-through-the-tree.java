@@ -25,8 +25,10 @@ public class Main {
             if (print == 0) {
                 visited.add(a);
             }
-            bw.flush();
+            if (i % 10 == 0)
+                bw.flush();
         }
+        bw.flush();
     }
     
 }
