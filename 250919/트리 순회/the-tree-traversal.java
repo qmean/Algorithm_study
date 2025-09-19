@@ -2,66 +2,63 @@ import java.util.*;
 
 public class Main {
 
-    static char[] tree;
-    static HashMap<Character, Integer> map = new HashMap<>();
+    static HashMap<Character, Segment> map = new HashMap<>();
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        
-        tree = new char[(int)Math.pow(2,n) + 1];
-        Arrays.fill(tree, '.');
-
-        tree[1] = 'A';
-        map.put('A', 1);
 
         for (int i = 0; i < n; i++) {
             char root = sc.next().charAt(0);
             char left = sc.next().charAt(0);
             char right = sc.next().charAt(0);
 
-            int rootIdx = map.get(root);
-            int leftIdx = rootIdx * 2;
-            int rightIdx = rootIdx * 2 + 1;
-            
-            tree[leftIdx] = left;
-            tree[rightIdx] = right;
-            map.put(left, leftIdx);
-            map.put(right, rightIdx);
+            map.put(root, new Segment(left, right));
         }
 
-        preOrder(1);
+        preOrder('A');
         System.out.println();
-        inOrder(1);
+        inOrder('A');
         System.out.println();
-        postOrder(1);
+        postOrder('A');
         System.out.println();
     }
 
-    static void preOrder(int node) {
-        if (tree[node] == '.')
+    static void preOrder(char node) {
+        if (node == '.')
             return;
 
-        System.out.print(tree[node]);
-        preOrder(node * 2);
-        preOrder(node * 2 + 1);
+        System.out.print(node);
+        preOrder(map.get(node).left);
+        preOrder(map.get(node).right);
     }
 
-    static void inOrder(int node) {
-        if (tree[node] == '.')
+    static void inOrder(char node) {
+        if (node == '.')
             return;
 
-        inOrder(node * 2);
-        System.out.print(tree[node]);
-        inOrder(node * 2 + 1);
+        
+        inOrder(map.get(node).left);
+        System.out.print(node);
+        inOrder(map.get(node).right);
     }
 
-    static void postOrder(int node) {
-        if (tree[node] == '.')
+    static void postOrder(char node) {
+        if (node == '.')
             return;
 
-        postOrder(node * 2);
-        postOrder(node * 2 + 1);
-        System.out.print(tree[node]);
+        postOrder(map.get(node).left);
+        postOrder(map.get(node).right);
+        System.out.print(node);
+    }
+
+    static class Segment {
+        char left;
+        char right;
+
+        public Segment(char l, char r) {
+            this.left = l;
+            this.right = r;
+        }
     }
 }
