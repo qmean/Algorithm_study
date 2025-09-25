@@ -16,7 +16,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             for (int j = 1; j <= m - 1; j++) {
                 int v = sc.nextInt();
-                int src = i * n + j;
+                int src = i * m + j;
                 int dest = src + 1;
                 pq.add(new Edge(src, dest, v));
             }
@@ -25,7 +25,7 @@ public class Main {
         for (int i = 0; i < n - 1; i++) {
             for (int j = 1; j <= m; j++) {
                 int v = sc.nextInt();
-                int src = i * n + j;
+                int src = i * m + j;
                 int dest = src + m;
                 pq.add(new Edge(src, dest, v));
             }
